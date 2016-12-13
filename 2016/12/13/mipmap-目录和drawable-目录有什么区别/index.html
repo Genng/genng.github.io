@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://genng.github.io">
-  <title>Archives: 2016 | Genng</title>
+  <title>mipmap 目录和drawable 目录有什么区别 | Genng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="终将不再是曾经的那个少年！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Genng">
-<meta property="og:url" content="http://genng.github.io/archives/2016/index.html">
+  <meta name="description" content="使用上没有任何区别,你把它当drawable用就好了。但是用mipmap系统会在缩放上提供一定的性能优化。官方介绍：
+Mipmapping for drawables
+Using a mipmap as the source for your bitmap or drawable is a simple way to provide a quality image and various imag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mipmap 目录和drawable 目录有什么区别">
+<meta property="og:url" content="http://genng.github.io/2016/12/13/mipmap-目录和drawable-目录有什么区别/index.html">
 <meta property="og:site_name" content="Genng">
-<meta property="og:description" content="终将不再是曾经的那个少年！">
+<meta property="og:description" content="使用上没有任何区别,你把它当drawable用就好了。但是用mipmap系统会在缩放上提供一定的性能优化。官方介绍：
+Mipmapping for drawables
+Using a mipmap as the source for your bitmap or drawable is a simple way to provide a quality image and various imag">
+<meta property="og:updated_time" content="2016-12-13T08:07:45.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Genng">
-<meta name="twitter:description" content="终将不再是曾经的那个少年！">
+<meta name="twitter:title" content="mipmap 目录和drawable 目录有什么区别">
+<meta name="twitter:description" content="使用上没有任何区别,你把它当drawable用就好了。但是用mipmap系统会在缩放上提供一定的性能优化。官方介绍：
+Mipmapping for drawables
+Using a mipmap as the source for your bitmap or drawable is a simple way to provide a quality image and various imag">
   
     <link rel="alternative" href="/atom.xml" title="Genng" type="application/atom+xml">
   
@@ -144,296 +151,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mipmap-目录和drawable-目录有什么区别" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mipmap 目录和drawable 目录有什么区别
+    </h1>
+  
+
+        <a href="/2016/12/13/mipmap-目录和drawable-目录有什么区别/" class="archive-article-date">
+  	<time datetime="2016-12-13T08:07:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
+</a>
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用上没有任何区别,你把它当drawable用就好了。<br>但是用mipmap系统会在缩放上提供一定的性能优化。<br>官方介绍：</p>
+<pre><code>Mipmapping for drawables
+Using a mipmap as the source for your bitmap or drawable is a simple way to provide a quality image and various image scales, which can be particularly useful if you expect your image to be scaled during an animation.
+Android 4.2 (API level 17) added support for mipmaps in the Bitmap class—Android swaps the mip images in your Bitmap when you&apos;ve supplied a mipmap source and have enabled setHasMipMap(). Now in Android 4.3, you can enable mipmaps for a BitmapDrawable object as well, by providing a mipmap asset and setting the android:mipMap attribute in a bitmap resource file or by calling hasMipMap().
+</code></pre><p>应用场景：</p>
+<pre><code>If you know that you are going to draw this bitmap at less than 50% of its original size, you may be able to obtain a higher quality by turning this property on. Note that if the renderer respects this hint it might have to allocate extra memory to hold the mipmap levels for this bitmap.
+</code></pre><p>一个应用实例：</p>
+<pre><code>Nexus 6
+Screen
+The Nexus 6 boasts an impressive 5.96” Quad HD screen display at a resolution of 2560 x 1440 (493 ppi). This translates to ~ 730 x 410 dp (density independent pixels).
+Check your assets
+It has a quantized density of 560 dpi, which falls in between the xxhdpi and xxxhdpi primary density buckets. For the Nexus 6, the platform will scale down xxxhdpi assets, but if those aren’t available, then it will scale up xxhdpi assets.
+Provide at least an xxxhdpi app icon because devices can display large app icons on the launcher. It’s best practice to place your app icons in mipmap- folders (not the drawable- folders) because they are used at resolutions different from the device’s current density. For example, an xxxhdpi app icon can be used on the launcher for an xxhdpi device.
+res/
+mipmap-mdpi/
+    ic_launcher.png
+mipmap-hdpi/
+    ic_launcher.png
+mipmap-xhdpi/
+  ic_launcher.png  
+mipmap-xxhdpi/
+    ic_launcher.png
+mipmap-xxxhdpi/   
+    ic_launcher.png  # App icon used on Nexus 6 device launcher
+Choosing to add xxxhdpi versions for the rest of your assets will provide a sharper visual experience on the Nexus 6, but does increase apk size, so you should make an appropriate decision for your app.
+res/
+drawable-mdpi/
+  ic_sunny.png
+ drawable-hdpi/
+  ic_sunny.png
+drawable-xhdpi/   
+  ic_sunny.png
+drawable-xxhdpi/  # Fall back to these if xxxhdpi versions aren’t available
+  ic_sunny.png 
+drawable-xxxhdpi/ # Higher resolution assets for Nexus 6
+  ic_sunny.png
+</code></pre><p>##总结</p>
+<p>###这个实例总结一下是这样：<br>Nexus 6 有 493 ppi，它刚好在 xxhdpi和xxxhdpi之间，所以显示的时候需要对xxxhdpi的资源进行缩小，如果你用了mipmap-xxxhdpi,那么这里会对sclae有一个优化，性能更好，占用内存更少。所以现在官方推荐使用mipmap：<br>    It’sbest practice to place your app icons in mipmap- folders (not the drawable- folders) because they are used at resolutions different from the device’s current density.</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wx_pay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/小记Android客户端ByJian/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:15:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/小记Android客户端ByJian/">小记Android客户端ByJian</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://genng.github.io/2016/12/13/mipmap-目录和drawable-目录有什么区别/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/移动H5前端性能优化指南/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:13:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/移动H5前端性能优化指南/">移动H5前端性能优化指南</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/13/Android-Studio-常用设置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android Studio 常用设置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/13/Android-常用的adb命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 常用的adb命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/新奥营业厅App接口-v1-0/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:12:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/新奥营业厅App接口-v1-0/">新奥营业厅App接口 v1.0</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/如何写面向互联网公司的求职简历/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:12:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/如何写面向互联网公司的求职简历/">如何写面向互联网公司的求职简历</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Picasso使用/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Picasso使用/">Picasso使用</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android-Studio-jar-与-aar-的生成与-aar导入项目方法/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:10:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android-Studio-jar-与-aar-的生成与-aar导入项目方法/">Android Studio] *.jar 与 .aar 的生成与.aar导入项目方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android-Gradle-模块化开发实例-Demo/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:10:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android-Gradle-模块化开发实例-Demo/">Android Gradle 模块化开发实例 Demo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Eclipse-Java注释模板设置/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:09:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Eclipse-Java注释模板设置/">Eclipse Java注释模板设置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android性能优化之渲染篇/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:08:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android性能优化之渲染篇/">Android性能优化之渲染篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android-Studio-常用设置/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:08:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android-Studio-常用设置/">Android Studio 常用设置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -456,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

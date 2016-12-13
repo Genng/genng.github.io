@@ -6,18 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://genng.github.io">
-  <title>hello blog | Genng</title>
+  <title>Android Gradle 模块化开发实例 Demo | Genng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你好，欢迎来到我的blog！">
+  <meta name="description" content="前言
+这两天看到一篇文章很火，详细见：http://stormzhang.com/android/2015/03/01/android-reference-local-aar/我大概看了下，然后搜索了下相关资料，作者说的没有错，我很欣赏这种行为，其实是已经在Google上搜刮过了，然后进行总结写文章。就如作者说的，就算官网上对于aar的描述也是凤毛菱角。简单来讲，jar包中封装的大多是一些方法，但">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello blog">
-<meta property="og:url" content="http://genng.github.io/2016/12/12/hello-blog/index.html">
+<meta property="og:title" content="Android Gradle 模块化开发实例 Demo">
+<meta property="og:url" content="http://genng.github.io/2016/12/13/Android-Gradle-模块化开发实例-Demo/index.html">
 <meta property="og:site_name" content="Genng">
-<meta property="og:description" content="你好，欢迎来到我的blog！">
-<meta property="og:updated_time" content="2016-12-12T07:52:09.331Z">
+<meta property="og:description" content="前言
+这两天看到一篇文章很火，详细见：http://stormzhang.com/android/2015/03/01/android-reference-local-aar/我大概看了下，然后搜索了下相关资料，作者说的没有错，我很欣赏这种行为，其实是已经在Google上搜刮过了，然后进行总结写文章。就如作者说的，就算官网上对于aar的描述也是凤毛菱角。简单来讲，jar包中封装的大多是一些方法，但">
+<meta property="og:image" content="http://testerhome.com/photo/2015/b5670b9adac66ee4e7b6d8581cb35a6b.png">
+<meta property="og:image" content="http://testerhome.com/photo/2015/df026a04157f4cdd3f1c470303157b90.png">
+<meta property="og:image" content="http://testerhome.com/photo/2015/1bcc59ddcdb836ba63e584a485748dd5.png">
+<meta property="og:updated_time" content="2016-12-13T08:10:20.502Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hello blog">
-<meta name="twitter:description" content="你好，欢迎来到我的blog！">
+<meta name="twitter:title" content="Android Gradle 模块化开发实例 Demo">
+<meta name="twitter:description" content="前言
+这两天看到一篇文章很火，详细见：http://stormzhang.com/android/2015/03/01/android-reference-local-aar/我大概看了下，然后搜索了下相关资料，作者说的没有错，我很欣赏这种行为，其实是已经在Google上搜刮过了，然后进行总结写文章。就如作者说的，就算官网上对于aar的描述也是凤毛菱角。简单来讲，jar包中封装的大多是一些方法，但">
+<meta name="twitter:image" content="http://testerhome.com/photo/2015/b5670b9adac66ee4e7b6d8581cb35a6b.png">
   
     <link rel="alternative" href="/atom.xml" title="Genng" type="application/atom+xml">
   
@@ -145,25 +152,90 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-blog" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Android-Gradle-模块化开发实例-Demo" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hello blog
+      Android Gradle 模块化开发实例 Demo
     </h1>
   
 
-        <a href="/2016/12/12/hello-blog/" class="archive-article-date">
-  	<time datetime="2016-12-12T07:51:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-12</time>
+        <a href="/2016/12/13/Android-Gradle-模块化开发实例-Demo/" class="archive-article-date">
+  	<time datetime="2016-12-13T08:10:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>你好，欢迎来到我的blog！</p>
+        <p>前言</p>
+<p>这两天看到一篇文章很火，详细见：<a href="http://stormzhang.com/android/2015/03/01/android-reference-local-aar/" target="_blank" rel="external">http://stormzhang.com/android/2015/03/01/android-reference-local-aar/</a><br>我大概看了下，然后搜索了下相关资料，作者说的没有错，我很欣赏这种行为，其实是已经在Google上搜刮过了，然后进行总结写文章。就如作者说的，就算官网上对于aar的描述也是凤毛菱角。简单来讲，jar包中封装的大多是一些方法，但是aar其实就是一个完整的Android App，所以包括了所有的资源文件等，我们可以很好的使用已经封装好的一些风格，包括UI界面显示等。</p>
+<p>感谢作者的文章，我也是看了之后想试试看例子，不过网上找了一圈，发现都是在Gradle正式release前的例子，所以就还是自给自足啦。</p>
+<p>创建一个aar<br><img src="http://testerhome.com/photo/2015/b5670b9adac66ee4e7b6d8581cb35a6b.png" alt="file-list"></p>
+<p>既然我们要做，首先先创建一个aar包咯。本次的demo全部是本地化的引用。首先我们new一个新的Module出来。</p>
+<p>我们新建了一个Android Library，我们从结构中可以看出和一个Android App的Project没有什么区别。<br><img src="http://testerhome.com/photo/2015/df026a04157f4cdd3f1c470303157b90.png" alt="file-list"></p>
+<p>唯独的区别在于build.gradle，需要定义apply plugin: ‘com.android.library’，告诉studio这是一个library。定义如下：</p>
+<p>apply plugin: ‘com.android.library’</p>
+<p>android {<br>    compileSdkVersion 22<br>    buildToolsVersion “22.0.0”</p>
+<pre><code>defaultConfig {
+    minSdkVersion 10
+    targetSdkVersion 22
+    versionCode 1
+    versionName &quot;1.0&quot;
+}
+buildTypes {
+    release {
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;
+    }
+}
+</code></pre><p>}</p>
+<pre><code>dependencies {
+    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
+    compile &apos;com.android.support:appcompat-v7:22.0.0&apos;
+}
+</code></pre><p>我们现在来修改下我们的主方法，添加一个如下的方法（记得还是修改下主类名）：</p>
+<pre><code>public static  void DisPlayToast(Context context){
+    Toast.makeText(context,&quot;this is aar toast&quot;,Toast.LENGTH_LONG).show();
+}
+</code></pre><p>接着我们就可以来编译啦。进入library，执行gradle assembleDebug，接着我们可以在~/AndroidLibrary2/mylibrary/build/outputs/aar/目录下找到我们编译好的aar文件。是不是很简单</p>
+<p>本地加载aar</p>
+<p>我们有了aar之后，将这个文件放入我们app工程的libs目录下，这样我们就可以进行调用啦。修改app的build.gradle如下：</p>
+<pre><code>apply plugin: &apos;com.android.application&apos;
+
+android {
+ compileSdkVersion 22
+    buildToolsVersion &quot;22.0.0&quot;
+
+defaultConfig {
+    applicationId &quot;com.example.monkey.androidlibrary2&quot;
+    minSdkVersion 17
+    targetSdkVersion 22
+    versionCode 1
+    versionName &quot;1.0&quot;
+}
+buildTypes {
+    release {
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;
+    }
+}
+</code></pre><p>}<br>    repositories {<br>        flatDir {<br>            dirs ‘libs’<br>        }<br>        mavenCentral()<br>        mavenLocal()<br>    }</p>
+<pre><code>dependencies {
+    compile(name:&apos;mylibrary3-debug&apos;, ext:&apos;aar&apos;)     //这里我因为尝试了几次，所以都是数字编号了，大家可以无视
+
+    compile fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])
+    compile &apos;com.android.support:appcompat-v7:22.0.0&apos;
+}
+</code></pre><p>开始对app进行编译，这样的话工程会自动将这个aar文件解析出来。使用gradle assembleDebug。我们可以看到在/app/build/intermediates/exploded-aar/目录下已经有了我们增加的aar包的文件引用。如下</p>
+<p><img src="http://testerhome.com/photo/2015/1bcc59ddcdb836ba63e584a485748dd5.png" alt="file-list"></p>
+<p>修改app代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">package com.example.monkey.androidlibrary2;</div><div class="line"></div><div class="line">import android.os.Bundle;</div><div class="line">import android.view.Menu;</div><div class="line">import android.view.MenuItem;</div><div class="line"></div><div class="line">import com.example.monkey.mylibrary.aarActivity;</div><div class="line"></div><div class="line"></div><div class="line">public class MyActivity extends aarActivity &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        DisPlayToast(this);</div><div class="line">     //   Toast.makeText(this,&quot;test&quot;,Toast.LENGTH_LONG).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onCreateOptionsMenu(Menu menu) &#123;</div><div class="line">        // Inflate the menu; this adds items to the action bar if it is present.</div><div class="line">        getMenuInflater().inflate(R.menu.menu_main, menu);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onOptionsItemSelected(MenuItem item) &#123;</div><div class="line">        // Handle action bar item clicks here. The action bar will</div><div class="line">        // automatically handle clicks on the Home/Up button, so long</div><div class="line">        // as you specify a parent activity in AndroidManifest.xml.</div><div class="line">        int id = item.getItemId();</div><div class="line"></div><div class="line">        //noinspection SimplifiableIfStatement</div><div class="line">        if (id == R.id.action_settings) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return super.onOptionsItemSelected(item);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其实从maven和jcenter()上下载也是一个逻辑，没有什么太大区别。只不过貌似在Gradle 1.0之前本地引用是有bug的。</p>
+<p>代码地址：<a href="https://github.com/monkeytest15/Gradle_aar/tree/master/AndroidLibrary2" target="_blank" rel="external">https://github.com/monkeytest15/Gradle_aar/tree/master/AndroidLibrary2</a></p>
+<p>后续</p>
+<p>我发现我sdk更新的不完善，我表示我要回家更新完整之后再做后续的讨论了。</p>
 
       
 
@@ -248,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://genng.github.io/2016/12/12/hello-blog/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://genng.github.io/2016/12/13/Android-Gradle-模块化开发实例-Demo/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -262,18 +334,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/12/12/Cmd-Markdown-简明语法手册/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/13/Android-Studio-jar-与-aar-的生成与-aar导入项目方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Cmd Markdown 简明语法手册
+          Android Studio] *.jar 与 .aar 的生成与.aar导入项目方法
         
       </div>
     </a>
   
   
-    <a href="/2016/12/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2016/12/13/Eclipse-Java注释模板设置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Eclipse Java注释模板设置</div>
       <i class="icon-circle-right"></i>
     </a>
   

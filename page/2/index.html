@@ -6,38 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://genng.github.io">
-  <title>Cmd Markdown 简明语法手册 | Genng</title>
+  <title>Genng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 斜体和粗体使用  和 * 表示斜体和粗体。
-示例：
-这是 斜体，这是 粗体。
-2. 分级标题使用 === 表示一级标题，使用 — 表示二级标题。
-示例：
-1234567这是一个一级标题============================这是一个二级标题--------------------------------------------------### 这是一个三级标题
-你也可以选择">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Cmd Markdown 简明语法手册">
-<meta property="og:url" content="http://genng.github.io/2016/12/12/Cmd-Markdown-简明语法手册/index.html">
+  <meta name="description" content="终将不再是曾经的那个少年！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Genng">
+<meta property="og:url" content="http://genng.github.io/page/2/index.html">
 <meta property="og:site_name" content="Genng">
-<meta property="og:description" content="1. 斜体和粗体使用  和 * 表示斜体和粗体。
-示例：
-这是 斜体，这是 粗体。
-2. 分级标题使用 === 表示一级标题，使用 — 表示二级标题。
-示例：
-1234567这是一个一级标题============================这是一个二级标题--------------------------------------------------### 这是一个三级标题
-你也可以选择">
-<meta property="og:image" content="https://www.zybuluo.com/static/img/my_head.jpg">
-<meta property="og:updated_time" content="2016-12-12T07:58:38.900Z">
+<meta property="og:description" content="终将不再是曾经的那个少年！">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cmd Markdown 简明语法手册">
-<meta name="twitter:description" content="1. 斜体和粗体使用  和 * 表示斜体和粗体。
-示例：
-这是 斜体，这是 粗体。
-2. 分级标题使用 === 表示一级标题，使用 — 表示二级标题。
-示例：
-1234567这是一个一级标题============================这是一个二级标题--------------------------------------------------### 这是一个三级标题
-你也可以选择">
-<meta name="twitter:image" content="https://www.zybuluo.com/static/img/my_head.jpg">
+<meta name="twitter:title" content="Genng">
+<meta name="twitter:description" content="终将不再是曾经的那个少年！">
   
     <link rel="alternative" href="/atom.xml" title="Genng" type="application/atom+xml">
   
@@ -165,14 +144,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Cmd-Markdown-简明语法手册" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-mipmap-目录和drawable-目录有什么区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Cmd Markdown 简明语法手册
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/13/mipmap-目录和drawable-目录有什么区别/">mipmap 目录和drawable 目录有什么区别</a>
+    </h1>
+  
+
+        <a href="/2016/12/13/mipmap-目录和drawable-目录有什么区别/" class="archive-article-date">
+  	<time datetime="2016-12-13T08:07:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用上没有任何区别,你把它当drawable用就好了。<br>但是用mipmap系统会在缩放上提供一定的性能优化。<br>官方介绍：</p>
+<pre><code>Mipmapping for drawables
+Using a mipmap as the source for your bitmap or drawable is a simple way to provide a quality image and various image scales, which can be particularly useful if you expect your image to be scaled during an animation.
+Android 4.2 (API level 17) added support for mipmaps in the Bitmap class—Android swaps the mip images in your Bitmap when you&apos;ve supplied a mipmap source and have enabled setHasMipMap(). Now in Android 4.3, you can enable mipmaps for a BitmapDrawable object as well, by providing a mipmap asset and setting the android:mipMap attribute in a bitmap resource file or by calling hasMipMap().
+</code></pre><p>应用场景：</p>
+<pre><code>If you know that you are going to draw this bitmap at less than 50% of its original size, you may be able to obtain a higher quality by turning this property on. Note that if the renderer respects this hint it might have to allocate extra memory to hold the mipmap levels for this bitmap.
+</code></pre><p>一个应用实例：</p>
+<pre><code>Nexus 6
+Screen
+The Nexus 6 boasts an impressive 5.96” Quad HD screen display at a resolution of 2560 x 1440 (493 ppi). This translates to ~ 730 x 410 dp (density independent pixels).
+Check your assets
+It has a quantized density of 560 dpi, which falls in between the xxhdpi and xxxhdpi primary density buckets. For the Nexus 6, the platform will scale down xxxhdpi assets, but if those aren’t available, then it will scale up xxhdpi assets.
+Provide at least an xxxhdpi app icon because devices can display large app icons on the launcher. It’s best practice to place your app icons in mipmap- folders (not the drawable- folders) because they are used at resolutions different from the device’s current density. For example, an xxxhdpi app icon can be used on the launcher for an xxhdpi device.
+res/
+mipmap-mdpi/
+    ic_launcher.png
+mipmap-hdpi/
+    ic_launcher.png
+mipmap-xhdpi/
+  ic_launcher.png  
+mipmap-xxhdpi/
+    ic_launcher.png
+mipmap-xxxhdpi/   
+    ic_launcher.png  # App icon used on Nexus 6 device launcher
+Choosing to add xxxhdpi versions for the rest of your assets will provide a sharper visual experience on the Nexus 6, but does increase apk size, so you should make an appropriate decision for your app.
+res/
+drawable-mdpi/
+  ic_sunny.png
+ drawable-hdpi/
+  ic_sunny.png
+drawable-xhdpi/   
+  ic_sunny.png
+drawable-xxhdpi/  # Fall back to these if xxxhdpi versions aren’t available
+  ic_sunny.png 
+drawable-xxxhdpi/ # Higher resolution assets for Nexus 6
+  ic_sunny.png
+</code></pre><p>##总结</p>
+<p>###这个实例总结一下是这样：<br>Nexus 6 有 493 ppi，它刚好在 xxhdpi和xxxhdpi之间，所以显示的时候需要对xxxhdpi的资源进行缩小，如果你用了mipmap-xxxhdpi,那么这里会对sclae有一个优化，性能更好，占用内存更少。所以现在官方推荐使用mipmap：<br>    It’sbest practice to place your app icons in mipmap- folders (not the drawable- folders) because they are used at resolutions different from the device’s current density.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/13/mipmap-目录和drawable-目录有什么区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android-常用的adb命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/13/Android-常用的adb命令/">Android 常用的adb命令</a>
+    </h1>
+  
+
+        <a href="/2016/12/13/Android-常用的adb命令/" class="archive-article-date">
+  	<time datetime="2016-12-13T08:06:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、安装APK(如果加 -r 参数，保留已设定数据，重新安装filename.apk)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb install xxx.apk  </div><div class="line">adb install -r xxx.apk</div></pre></td></tr></table></figure></p>
+<p>2、卸载APK(如果加 -k 参数，为卸载软件但是保留配置和缓存文件)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb uninstall xxx.apk</div><div class="line">adb uninstall -k xxx.apk</div></pre></td></tr></table></figure></p>
+<p>3、查看当前所有连接的模拟器设备<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb devices</div></pre></td></tr></table></figure></p>
+<p>4、对某一模拟器操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb -s 模拟器编号 命令</div></pre></td></tr></table></figure></p>
+<p>5、导入文件到模拟器 （该命令也可以实现安装APK，只要把APK导入到”/system/app”或者”/data/app”就OK）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb push 文件 模拟器路径</div></pre></td></tr></table></figure></p>
+<p>6、从模拟器导出文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb pull 模拟器文件 本地路径</div></pre></td></tr></table></figure></p>
+<p>7、查看模拟器log信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat</div></pre></td></tr></table></figure></p>
+<p>8、获取管理员权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb root</div></pre></td></tr></table></figure></p>
+<p>9、进入shell模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell</div></pre></td></tr></table></figure></p>
+<p>10、启动activity (adb shell后面跟的命令主要来自源码\system\core\toolbox目录和源码\frameworks\base\cmds目录)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n 包名/包名＋类名（-n 类名,-a action,-d date,-m MIME-TYPE,-c category,-e 扩展数据,等）</div></pre></td></tr></table></figure></p>
+<p>11、获取设备ID号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb get-serialno</div></pre></td></tr></table></figure></p>
+<p>12、开启adb服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb start-server</div></pre></td></tr></table></figure></p>
+<p>13、关闭adb服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb kill-server</div></pre></td></tr></table></figure></p>
+<p>14、访问sqlite3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell </div><div class="line">sqlite3</div></pre></td></tr></table></figure></p>
+<p>15、重启设备<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot</div></pre></td></tr></table></figure></p>
+<p>16、挂在分区(可使系统分区重新可写)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb remount</div></pre></td></tr></table></figure></p>
+<p>17、发布端口（可以设置任意的端口号，做为主机向模拟器或设备的请求端口）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb forward tcp:5555 tcp:8000</div></pre></td></tr></table></figure></p>
+<p>18、关机命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell reboot -p</div></pre></td></tr></table></figure></p>
+<p>以上就是一些常用的adb命令，如有不懂的或者其它常用的命令，可以留言！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Adb/">Android Adb</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/13/Android-常用的adb命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Cmd-Markdown-简明语法手册" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/12/Cmd-Markdown-简明语法手册/">Cmd Markdown 简明语法手册</a>
     </h1>
   
 
@@ -308,31 +447,54 @@
       
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/wx_pay.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/12/Cmd-Markdown-简明语法手册/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/12/hello-blog/">hello blog</a>
+    </h1>
+  
+
+        <a href="/2016/12/12/hello-blog/" class="archive-article-date">
+  	<time datetime="2016-12-12T07:51:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-12</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>你好，欢迎来到我的blog！</p>
+
+      
+
       
     </div>
     <div class="article-info article-info-index">
@@ -341,90 +503,87 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/12/hello-blog/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://genng.github.io/2016/12/12/Cmd-Markdown-简明语法手册/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+
+
+
+
+
+
+
   
-<nav id="article-nav">
-  
-    <a href="/2016/12/13/Android-常用的adb命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
         
-          Android 常用的adb命令
-        
-      </div>
-    </a>
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/12/hello-world/">Hello World</a>
+    </h1>
+  
+
+        <a href="/2016/12/12/hello-world/" class="archive-article-date">
+  	<time datetime="2016-12-12T07:19:14.280Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-12</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/12/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
   
-    <a href="/2016/12/12/hello-blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hello blog</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
-</nav>
-
-
-
-
-
-
-
 
 
           </div>
@@ -446,8 +605,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

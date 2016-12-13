@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://genng.github.io">
-  <title>Archives: 2016 | Genng</title>
+  <title>Android 常用的adb命令 | Genng</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="终将不再是曾经的那个少年！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Genng">
-<meta property="og:url" content="http://genng.github.io/archives/2016/index.html">
+  <meta name="description" content="1、安装APK(如果加 -r 参数，保留已设定数据，重新安装filename.apk)12adb install xxx.apk  adb install -r xxx.apk
+2、卸载APK(如果加 -k 参数，为卸载软件但是保留配置和缓存文件)12adb uninstall xxx.apkadb uninstall -k xxx.apk
+3、查看当前所有连接的模拟器设备1adb devices">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 常用的adb命令">
+<meta property="og:url" content="http://genng.github.io/2016/12/13/Android-常用的adb命令/index.html">
 <meta property="og:site_name" content="Genng">
-<meta property="og:description" content="终将不再是曾经的那个少年！">
+<meta property="og:description" content="1、安装APK(如果加 -r 参数，保留已设定数据，重新安装filename.apk)12adb install xxx.apk  adb install -r xxx.apk
+2、卸载APK(如果加 -k 参数，为卸载软件但是保留配置和缓存文件)12adb uninstall xxx.apkadb uninstall -k xxx.apk
+3、查看当前所有连接的模拟器设备1adb devices">
+<meta property="og:updated_time" content="2016-12-13T08:07:05.990Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Genng">
-<meta name="twitter:description" content="终将不再是曾经的那个少年！">
+<meta name="twitter:title" content="Android 常用的adb命令">
+<meta name="twitter:description" content="1、安装APK(如果加 -r 参数，保留已设定数据，重新安装filename.apk)12adb install xxx.apk  adb install -r xxx.apk
+2、卸载APK(如果加 -k 参数，为卸载软件但是保留配置和缓存文件)12adb uninstall xxx.apkadb uninstall -k xxx.apk
+3、查看当前所有连接的模拟器设备1adb devices">
   
     <link rel="alternative" href="/atom.xml" title="Genng" type="application/atom+xml">
   
@@ -144,296 +151,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Android-常用的adb命令" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 常用的adb命令
+    </h1>
+  
+
+        <a href="/2016/12/13/Android-常用的adb命令/" class="archive-article-date">
+  	<time datetime="2016-12-13T08:06:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
+</a>
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、安装APK(如果加 -r 参数，保留已设定数据，重新安装filename.apk)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb install xxx.apk  </div><div class="line">adb install -r xxx.apk</div></pre></td></tr></table></figure></p>
+<p>2、卸载APK(如果加 -k 参数，为卸载软件但是保留配置和缓存文件)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb uninstall xxx.apk</div><div class="line">adb uninstall -k xxx.apk</div></pre></td></tr></table></figure></p>
+<p>3、查看当前所有连接的模拟器设备<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb devices</div></pre></td></tr></table></figure></p>
+<p>4、对某一模拟器操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb -s 模拟器编号 命令</div></pre></td></tr></table></figure></p>
+<p>5、导入文件到模拟器 （该命令也可以实现安装APK，只要把APK导入到”/system/app”或者”/data/app”就OK）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb push 文件 模拟器路径</div></pre></td></tr></table></figure></p>
+<p>6、从模拟器导出文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb pull 模拟器文件 本地路径</div></pre></td></tr></table></figure></p>
+<p>7、查看模拟器log信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb logcat</div></pre></td></tr></table></figure></p>
+<p>8、获取管理员权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb root</div></pre></td></tr></table></figure></p>
+<p>9、进入shell模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell</div></pre></td></tr></table></figure></p>
+<p>10、启动activity (adb shell后面跟的命令主要来自源码\system\core\toolbox目录和源码\frameworks\base\cmds目录)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n 包名/包名＋类名（-n 类名,-a action,-d date,-m MIME-TYPE,-c category,-e 扩展数据,等）</div></pre></td></tr></table></figure></p>
+<p>11、获取设备ID号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb get-serialno</div></pre></td></tr></table></figure></p>
+<p>12、开启adb服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb start-server</div></pre></td></tr></table></figure></p>
+<p>13、关闭adb服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb kill-server</div></pre></td></tr></table></figure></p>
+<p>14、访问sqlite3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell </div><div class="line">sqlite3</div></pre></td></tr></table></figure></p>
+<p>15、重启设备<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb reboot</div></pre></td></tr></table></figure></p>
+<p>16、挂在分区(可使系统分区重新可写)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb remount</div></pre></td></tr></table></figure></p>
+<p>17、发布端口（可以设置任意的端口号，做为主机向模拟器或设备的请求端口）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb forward tcp:5555 tcp:8000</div></pre></td></tr></table></figure></p>
+<p>18、关机命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell reboot -p</div></pre></td></tr></table></figure></p>
+<p>以上就是一些常用的adb命令，如有不懂的或者其它常用的命令，可以留言！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wx_pay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/小记Android客户端ByJian/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:15:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/小记Android客户端ByJian/">小记Android客户端ByJian</a>
-    </h1>
-  
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Adb/">Android Adb</a></li></ul>
+	</div>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://genng.github.io/2016/12/13/Android-常用的adb命令/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/移动H5前端性能优化指南/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:13:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/移动H5前端性能优化指南/">移动H5前端性能优化指南</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/13/mipmap-目录和drawable-目录有什么区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mipmap 目录和drawable 目录有什么区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/12/Cmd-Markdown-简明语法手册/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Cmd Markdown 简明语法手册</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/新奥营业厅App接口-v1-0/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:12:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/新奥营业厅App接口-v1-0/">新奥营业厅App接口 v1.0</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/如何写面向互联网公司的求职简历/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:12:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/如何写面向互联网公司的求职简历/">如何写面向互联网公司的求职简历</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Picasso使用/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:11:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Picasso使用/">Picasso使用</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android-Studio-jar-与-aar-的生成与-aar导入项目方法/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:10:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android-Studio-jar-与-aar-的生成与-aar导入项目方法/">Android Studio] *.jar 与 .aar 的生成与.aar导入项目方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android-Gradle-模块化开发实例-Demo/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:10:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android-Gradle-模块化开发实例-Demo/">Android Gradle 模块化开发实例 Demo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Eclipse-Java注释模板设置/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:09:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Eclipse-Java注释模板设置/">Eclipse Java注释模板设置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android性能优化之渲染篇/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:08:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android性能优化之渲染篇/">Android性能优化之渲染篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/13/Android-Studio-常用设置/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:08:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/13/Android-Studio-常用设置/">Android Studio 常用设置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -456,8 +336,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
