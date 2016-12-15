@@ -146,6 +146,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-说说Code-Review-转" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/15/说说Code-Review-转/">说说Code Review(转)</a>
+    </h1>
+  
+
+        <a href="/2016/12/15/说说Code-Review-转/" class="archive-article-date">
+  	<time datetime="2016-12-15T02:47:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-15</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzA4ODgwNjk1MQ==&amp;mid=2653788392&amp;idx=1&amp;sn=e84f8546dff32030cef89fc29680db80&amp;scene=0#wechat_redirect" target="_blank" rel="external">http://mp.weixin.qq.com/s?__biz=MzA4ODgwNjk1MQ==&amp;mid=2653788392&amp;idx=1&amp;sn=e84f8546dff32030cef89fc29680db80&amp;scene=0#wechat_redirect</a></p>
+</blockquote>
+<p>之前写过一篇《写代码的四个境界》，那个时候，大部分时候我还是愉快地写着自己的代码。Code review 也是每天工作的一部分，但是相对而言花的时间还是有限的。</p>
+<p>最近一是因为角色转换，二是突然来了很多新人。花在 code review 上的时间比写代码多出了好多，也有一些心得和感触，随便写写吧。</p>
+<p>总的说来，硅谷稍具规模的公司 code review 的流程都是比较规范的。模式也差不多。一来所有的 PR 都必须有至少一个人 stamp，才能 merge。如果改的东西涉及到多个项目，则需要每个项目都有人 stamp 才行。还有一些特别关键的代码，比如支付相关的，通常也会需要支付组的人 stamp 才行。<br>NOTE: PR (pull request, a set of changes someone tries to push to a GitHub repository. Once a PR is sent, interested parties (peer engineers) can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.</p>
+<p>在 stamp 前，通常是 github page 上可以给出各种 comments，page 是共享的，所以谁都能看到。有些 comments 是询问，那么代码作者直接回复或解释就行。有些 comments 是指出代码的问题，这样代码作者可能会依此改动；也可能不同意，那就回复 comments，有的时候关于一个实现细节，讨论的 comments thread 可以多达十几条。这样对于大家达成共识很有帮助。</p>
+<p>以前遇到有朋友说：</p>
+<p>“看到代码写的太烂，觉得来回扯皮效率不高，干脆扑上去自己写。”<br>曾经我也有过类似的想法。不过最近遇到的一些事让我慢慢地意识到这种想法很要不得。</p>
+<p>首先就是从对方的角度来说。对方写不好，可能是对业务不熟悉，可能是对语言不熟悉，也可能是对公司代码的大架构不熟悉。如果你是帮他/她 “写” 而不是耐心指出哪里有问题，那么下一次，他/她可能还是不知道。不仅无益于别的人成长，有的时候甚至会让别人有挫败感。</p>
+<p>再然后就是这种方式的可扩展性很差。即使 code review 会花掉哪怕十倍于你自己写的时间和精力，但它会让人明白代码应该怎么写，从长远来看，这其实是在一定程度上 “复制” 你的生产力。你不能什么都自己写。尤其是你慢慢开始带项目、带新人。每天 review 五个人的代码，和写五个人的代码，你觉得长期而言哪个更合算？</p>
+<p>此外，如果说写代码是一个学习过程，怎么做一个好的代码审核人更是一个学习和成长的过程。自己绕过一个坑不难，难的是看到别人那么走，远远地你就能告诉他/她那里有个坑。而他/她在经你指出多次后，下一次他/她也会帮着指出别人的类似的问题。</p>
+<p>这一点最近感触尤为深刻。前一阵组里咔咔咔接二连三来了好多新人，老大说，你少写点代码，多做点 review。于是那几天我几乎工作的一半时间都用来看代码，写 comments。可是最近就会发现，他/她们相互之间大部分时候已经可以很好的相互 review 了，于是我又腾出好一些时间来做别的工作。</p>
+<p>Code review 做多了，发现其实也是有一定套路的，试着归纳如下：</p>
+<p> 代码格式方面。很多公司都有 coding style guideline。大家的约定俗成，避免公司的代码风格不一致，也避免一些不不要的为了 “要不要把闭括号另起一行” 而无谓地争论，除非是不小心，通常大家都不会弄错。但是新员工往往会在这方面还不太熟悉。这一类问题也比较容易指出。</p>
+<p>代码可读性方面。这包括一个函数不要太长，太长就 break down。所有的变量名尽量能够说明它的用意和类型。比如 hosting_address_hash，一看就知道是房东地址，而且是个 hash 类型。不要有嵌套太多层的条件语句或者循环语句。不要有一个太长的 boolean 判断语句。如果一个函数，别人需要看你的长篇注释才能明白，那这个函数就一定有重构的空间。另外，如果不可避免有一些注释，则一定要保证注释准确且与代码完全一致。</p>
+<p>帮代码作者想想他/她有没有漏掉任何 corner case。很多时候这是业务逻辑相关的，尤其需要比较老的工程师帮助指出需要处理的所有情况。</p>
+<p>Error handling。这是最常见也是代码审核最容易帮别人看出的问题。举个例子，下面一段简单到不能再简单的代码就至少有三个潜在的问题：params 里面需要 validate 是不是有 user_id 和 new_name 这两个 key；能不能找到这个 user_id 对应的 user；save 的时候会不会有 DB level 的 exception，应该怎么处理。</p>
+<p>测试例和防坑。测试例不用说了，每段代码都应该有测试例。但是对于一些你能预见如果别人改动代码会引起可能问题的情况，一定要额外的加测试例防止这种事情的发生。这一点没有例子参考也不太好说。怎么写好测试例，本身就值得写一篇文章了。</p>
+<p>小架构。什么意思呢，就是一个文件或者类内部的代码组织。比如如果有重复的代码段，就应该提取出来公用。不要在代码里随意设常数，所有的常数都应该文件顶部统一定义。哪些应该是 private，等等</p>
+<p>大架构。这个就更广了。包括文件组织，函数是不是应该抽象到 lib 或者 helper 文件里；是不是应该使用继承类；是不是和整个代码库的风格一致，等等。<br>当然，视具体情况可能还有很多别的需要在 code review 中注意的。但是如果按照这个 checklist 过一遍，一些明显的问题就可以避免个八九不离十了。</p>
+<p>另外，代码 review 和写代码是我们每个工程师都应该致力的两个方面，缺一不可。可能在工作中的某个阶段或者某个项目里，你会花更多的时间在某一面，但长久看来，两个技能缺一不可。</p>
+<p>代码审核是工作，不要抱有情绪化。我曾经干过一件事，一个外组同事的代码，别人已经 stamp 了，可是我觉得有问题，于是把 stamp revert 掉了，在 comments 里写了为什么有问题，和建议的改法。当时心里还有点觉得好像怪得罪人的。可是后来发现同事反而很客气地接受并道谢了。心里也是很感激有这样的工作环境。</p>
+<p>另外，经常会遇到有些 review 的 comments 里出现不同意见，其实是两个人在编程习惯和约定俗成上没有共识。如果在不违背公司 style guideline 的情况下，没必要一定让对方和你有一样的习惯。如果你真的觉得这样更好，通常我也只会写 “I personally would prefer A over B, but no strong opinion.” 或者 “How about change it to A, since … However, this is not a merge blocker. ”</p>
+<p>人都有不周到的时候。多几双眼睛一起帮你看一遍，就可以很大程度地减少代码里的错误。另外，相互 review 的过程中还能从彼此那里学到很多编程的小技巧和好习惯。细想来，很多 Java 和 Ruby 的特别好用的 feature，我都是在 code review 的过程中学到的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术相关/">技术相关</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/15/说说Code-Review-转/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2016年互联网总结ByJian" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1057,90 +1135,6 @@ buildTypes {
 
 
   
-    <article id="post-Android性能优化之渲染篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/13/Android性能优化之渲染篇/">Android性能优化之渲染篇</a>
-    </h1>
-  
-
-        <a href="/2016/12/13/Android性能优化之渲染篇/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:08:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Google近期在Udacity上发布了Android性能优化的在线课程，目前有三个篇章，分别从渲染，运算与内存，电量三个方面介绍了如何去优化性能，这些课程是Google之前在Youtube上发布的Android性能优化典范专题课程的细化与补充。</p>
-<p><img src="http://hukai.me/images/android_performance_course_udacity.jpg" alt="此处输入图片的描述"><br>下面是渲染篇章的学习笔记，部分内容和前面的性能优化典范有重合，欢迎大家一起学习交流！</p>
-<h3 id="1-Why-Rendering-Performance-Matters"><a href="#1-Why-Rendering-Performance-Matters" class="headerlink" title="1)Why Rendering Performance Matters"></a>1)Why Rendering Performance Matters</h3><p>现在有不少App为了达到很华丽的视觉效果，会需要在界面上层叠很多的视图组件，但是这会很容易引起性能问题。如何平衡Design与Performance就很需要智慧了。</p>
-<h3 id="2-Defining-‘Jank’"><a href="#2-Defining-‘Jank’" class="headerlink" title="2)Defining ‘Jank’"></a>2)Defining ‘Jank’</h3><p>大多数手机的屏幕刷新频率是60hz，如果在1000/60=16.67ms内没有办法把这一帧的任务执行完毕，就会发生丢帧的现象。丢帧越多，用户感受到的卡顿情况就越严重。</p>
-<h3 id="3-Rendering-Pipeline-Common-Problems"><a href="#3-Rendering-Pipeline-Common-Problems" class="headerlink" title="3)Rendering Pipeline: Common Problems"></a>3)Rendering Pipeline: Common Problems</h3><p>渲染操作通常依赖于两个核心组件：CPU与GPU。CPU负责包括Measure，Layout，Record，Execute的计算操作，GPU负责Rasterization(栅格化)操作。CPU通常存在的问题的原因是存在非必需的视图组件，它不仅仅会带来重复的计算操作，而且还会占用额外的GPU资源。</p>
-<h3 id="4-Android-UI-and-the-GPU"><a href="#4-Android-UI-and-the-GPU" class="headerlink" title="4)Android UI and the GPU"></a>4)Android UI and the GPU</h3><p>了解Android是如何利用GPU进行画面渲染有助于我们更好的理解性能问题。一个很直接的问题是：activity的画面是如何绘制到屏幕上的？那些复杂的XML布局文件又是如何能够被识别并绘制出来的？</p>
-<p>Resterization栅格化是绘制那些Button，Shape，Path，String，Bitmap等组件最基础的操作。它把那些组件拆分到不同的像素上进行显示。这是一个很费时的操作，GPU的引入就是为了加快栅格化的操作。</p>
-<p>CPU负责把UI组件计算成Polygons，Texture纹理，然后交给GPU进行栅格化渲染。</p>
-<p>然而每次从CPU转移到GPU是一件很麻烦的事情，所幸的是OpenGL ES可以把那些需要渲染的纹理Hold在GPU Memory里面，在下次需要渲染的时候直接进行操作。所以如果你更新了GPU所hold住的纹理内容，那么之前保存的状态就丢失了。</p>
-<p>在Android里面那些由主题所提供的资源，例如Bitmaps，Drawables都是一起打包到统一的Texture纹理当中，然后再传递到GPU里面，这意味着每次你需要使用这些资源的时候，都是直接从纹理里面进行获取渲染的。当然随着UI组件的越来越丰富，有了更多演变的形态。例如显示图片的时候，需要先经过CPU的计算加载到内存中，然后传递给GPU进行渲染。文字的显示比较复杂，需要先经过CPU换算成纹理，然后交给GPU进行渲染，返回到CPU绘制单个字符的时候，再重新引用经过GPU渲染的内容。动画则存在一个更加复杂的操作流程。</p>
-<p>为了能够使得App流畅，我们需要在每帧16ms以内处理完所有的CPU与GPU的计算，绘制，渲染等等操作。</p>
-<h3 id="5-GPU-Problem-Overdraw"><a href="#5-GPU-Problem-Overdraw" class="headerlink" title="5)GPU Problem: Overdraw"></a>5)GPU Problem: Overdraw</h3><p>Overdraw(过度绘制)描述的是屏幕上的某个像素在同一帧的时间内被绘制了多次。在多层次重叠的UI结构里面，如果不可见的UI也在做绘制的操作，会导致某些像素区域被绘制了多次。这样就会浪费大量的CPU以及GPU资源。</p>
-<p>当设计上追求更华丽的视觉效果的时候，我们就容易陷入采用复杂的多层次重叠视图来实现这种视觉效果的怪圈。这很容易导致大量的性能问题，为了获得最佳的性能，我们必须尽量减少Overdraw的情况发生。</p>
-<p>幸运的是，我们可以通过手机设置里面的开发者选项，打开Show GPU Overdraw的选项，观察UI上的Overdraw情况。</p>
-<p>蓝色，淡绿，淡红，深红代表了4种不同程度的Overdraw情况，我们的目标就是尽量减少红色Overdraw，看到更多的蓝色区域。</p>
-<h3 id="6-Visualize-and-Fix-Overdraw-Quiz-amp-Solution"><a href="#6-Visualize-and-Fix-Overdraw-Quiz-amp-Solution" class="headerlink" title="6)Visualize and Fix Overdraw - Quiz &amp; Solution"></a>6)Visualize and Fix Overdraw - Quiz &amp; Solution</h3><p>这里举了一个例子，通过XML文件可以看到有好几处非必需的background。通过把XML中非必需的background移除之后，可以显著减少布局的过度绘制。其中一个比较有意思的地方是：针对ListView中的Avatar ImageView的设置，在getView的代码里面，判断是否获取到对应的Bitmap，在获取到Avatar的图像之后，把ImageView的Background设置为Transparent，只有当图像没有获取到的时候才设置对应的Background占位图片，这样可以避免因为给Avatar设置背景图而导致的过度渲染。</p>
-<p>总结一下，优化步骤如下：</p>
-<pre><code>移除Window默认的Background
-移除XML布局文件中非必需的Background
-按需显示占位背景图片
-</code></pre><h3 id="7-ClipRect-amp-QuickReject"><a href="#7-ClipRect-amp-QuickReject" class="headerlink" title="7)ClipRect &amp; QuickReject"></a>7)ClipRect &amp; QuickReject</h3><p>前面有提到过，对不可见的UI组件进行绘制更新会导致Overdraw。例如Nav Drawer从前置可见的Activity滑出之后，如果还继续绘制那些在Nav Drawer里面不可见的UI组件，这就导致了Overdraw。为了解决这个问题，Android系统会通过避免绘制那些完全不可见的组件来尽量减少Overdraw。那些Nav Drawer里面不可见的View就不会被执行浪费资源。</p>
-<p>但是不幸的是，对于那些过于复杂的自定义的View(通常重写了onDraw方法)，Android系统无法检测在onDraw里面具体会执行什么操作，系统无法监控并自动优化，也就无法避免Overdraw了。但是我们可以通过canvas.clipRect()来帮助系统识别那些可见的区域。这个方法可以指定一块矩形区域，只有在这个区域内才会被绘制，其他的区域会被忽视。这个API可以很好的帮助那些有多组重叠组件的自定义View来控制显示的区域。同时clipRect方法还可以帮助节约CPU与GPU资源，在clipRect区域之外的绘制指令都不会被执行，那些部分内容在矩形区域内的组件，仍然会得到绘制。</p>
-<p>除了clipRect方法之外，我们还可以使用canvas.quickreject()来判断是否没和某个矩形相交，从而跳过那些非矩形区域内的绘制操作。</p>
-<h3 id="8-Apply-clipRect-and-quickReject-Quiz-amp-Solution"><a href="#8-Apply-clipRect-and-quickReject-Quiz-amp-Solution" class="headerlink" title="8)Apply clipRect and quickReject - Quiz &amp; Solution"></a>8)Apply clipRect and quickReject - Quiz &amp; Solution</h3><p>上面的示例图中显示了一个自定义的View，主要效果是呈现多张重叠的卡片。这个View的onDraw方法如下图所示：</p>
-<p>打开开发者选项中的显示过度渲染，可以看到我们这个自定义的View部分区域存在着过度绘制。那么是什么原因导致过度绘制的呢？</p>
-<h3 id="9-Fixing-Overdraw-with-Canvas-API"><a href="#9-Fixing-Overdraw-with-Canvas-API" class="headerlink" title="9)Fixing Overdraw with Canvas API"></a>9)Fixing Overdraw with Canvas API</h3><p>下面的代码显示了如何通过clipRect来解决自定义View的过度绘制，提高自定义View的绘制性能：</p>
-<p>下面是优化过后的效果：</p>
-<h3 id="10-Layouts-Invalidations-and-Perf"><a href="#10-Layouts-Invalidations-and-Perf" class="headerlink" title="10)Layouts, Invalidations and Perf"></a>10)Layouts, Invalidations and Perf</h3><p>Android需要把XML布局文件转换成GPU能够识别并绘制的对象。这个操作是在DisplayList的帮助下完成的。DisplayList持有所有将要交给GPU绘制到屏幕上的数据信息。</p>
-<p>在某个View第一次需要被渲染时，Display List会因此被创建，当这个View要显示到屏幕上时，我们会执行GPU的绘制指令来进行渲染。</p>
-<p>如果View的Property属性发生了改变（例如移动位置），我们就仅仅需要Execute Display List就够了。</p>
-<p>然而如果你修改了View中的某些可见组件的内容，那么之前的DisplayList就无法继续使用了，我们需要重新创建一个DisplayList并重新执行渲染指令更新到屏幕上。</p>
-<p>请注意：任何时候View中的绘制内容发生变化时，都会需要重新创建DisplayList，渲染DisplayList，更新到屏幕上等一系列操作。这个流程的表现性能取决于你的View的复杂程度，View的状态变化以及渲染管道的执行性能。举个例子，假设某个Button的大小需要增大到目前的两倍，在增大Button大小之前，需要通过父View重新计算并摆放其他子View的位置。修改View的大小会触发整个HierarcyView的重新计算大小的操作。如果是修改View的位置则会触发HierarchView重新计算其他View的位置。如果布局很复杂，这就会很容易导致严重的性能问题。</p>
-<h3 id="11-Hierarchy-Viewer-Walkthrough"><a href="#11-Hierarchy-Viewer-Walkthrough" class="headerlink" title="11)Hierarchy Viewer: Walkthrough"></a>11)Hierarchy Viewer: Walkthrough</h3><p>Hierarchy Viewer可以很直接的呈现布局的层次关系，视图组件的各种属性。 我们可以通过红，黄，绿三种不同的颜色来区分布局的Measure，Layout，Executive的相对性能表现如何。</p>
-<h3 id="12-Nested-Hierarchies-and-Performance"><a href="#12-Nested-Hierarchies-and-Performance" class="headerlink" title="12)Nested Hierarchies and Performance"></a>12)Nested Hierarchies and Performance</h3><p>提升布局性能的关键点是尽量保持布局层级的扁平化，避免出现重复的嵌套布局。例如下面的例子，有2行显示相同内容的视图，分别用两种不同的写法来实现，他们有着不同的层级。</p>
-<p>下图显示了使用2种不同的写法，在Hierarchy Viewer上呈现出来的性能测试差异：</p>
-<h3 id="13-Optimizing-Your-Layout"><a href="#13-Optimizing-Your-Layout" class="headerlink" title="13)Optimizing Your Layout"></a>13)Optimizing Your Layout</h3><p>下图举例演示了如何优化ListItem的布局，通过RelativeLayout替代旧方案中的嵌套LinearLayout来优化布局。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/13/Android性能优化之渲染篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1204,6 +1198,10 @@ buildTypes {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Android Adb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">技术相关</a>
               </li>
             
             <div class="clearfix"></div>
