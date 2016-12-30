@@ -158,6 +158,111 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Eclipse-Java注释模板设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/13/Eclipse-Java注释模板设置/">Eclipse Java注释模板设置</a>
+    </h1>
+  
+
+        <a href="/2016/12/13/Eclipse-Java注释模板设置/" class="archive-article-date">
+  	<time datetime="2016-12-13T08:09:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>设置注释模板的入口： Window-&gt;Preference-&gt;Java-&gt;Code Style-&gt;Code Template 然后展开Comments节点就是所有需设置注释的元素啦。现就每一个元素逐一介绍：</p>
+<p>文件(Files)注释标签：</p>
+<pre><code>/**   
+* @Title: ${file_name} 
+* @Package ${package_name} 
+* @Description: ${todo}(用一句话描述该文件做什么) 
+* @author A18ccms A18ccms_gmail_com   
+* @date ${date} ${time} 
+* @version V1.0   
+*/
+</code></pre><p>类型(Types)注释标签（类的注释）：</p>
+<pre><code>/** 
+* @ClassName: ${type_name} 
+* @Description: ${todo}(这里用一句话描述这个类的作用) 
+* @author A18ccms a18ccms_gmail_com 
+* @date ${date} ${time} 
+* 
+* ${tags} 
+*/
+</code></pre><p>字段(Fields)注释标签：</p>
+<pre><code>/** 
+* @Fields ${field} : ${todo}(用一句话描述这个变量表示什么) 
+*/ 
+</code></pre><p>构造函数标签：</p>
+<pre><code>/** 
+* &lt;p&gt;Title: &lt;/p&gt; 
+* &lt;p&gt;Description: &lt;/p&gt; 
+* ${tags} 
+*/
+</code></pre><p>方法(Constructor &amp; Methods)标签：</p>
+<pre><code>/** 
+* @Title: ${enclosing_method} 
+* @Description: ${todo}(这里用一句话描述这个方法的作用) 
+* @param ${tags}    设定文件 
+* @return ${return_type}    返回类型 
+* @throws 
+*/
+</code></pre><p>覆盖方法(Overriding Methods)标签：</p>
+<pre><code>/* (非 Javadoc) 
+* &lt;p&gt;Title: ${enclosing_method}&lt;/p&gt; 
+* &lt;p&gt;Description: &lt;/p&gt; 
+* ${tags} 
+* ${see_to_overridden} 
+*/
+</code></pre><p>代表方法(Delegate Methods)标签：</p>
+<pre><code>/** 
+* ${tags} 
+* ${see_to_target} 
+*/ 
+</code></pre><p>getter方法标签：</p>
+<pre><code>/** 
+* @return ${bare_field_name} 
+*/
+</code></pre><p>setter方法标签：</p>
+<pre><code>/** 
+* @param ${param} 要设置的 ${bare_field_name} 
+*/
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/13/Eclipse-Java注释模板设置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Android性能优化之渲染篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -811,11 +916,11 @@ drawable-xxxhdpi/ # Higher resolution assets for Nexus 6
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">随笔</a>
+                <a href="javascript:void(0)">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Android</a>
+                <a href="javascript:void(0)">随笔</a>
               </li>
              
               <li class="article-tag-list-item">

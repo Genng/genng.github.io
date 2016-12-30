@@ -158,6 +158,56 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-圣诞画个图-女朋友" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/30/圣诞画个图-女朋友/">圣诞画个图-女朋友</a>
+    </h1>
+  
+
+        <a href="/2016/12/30/圣诞画个图-女朋友/" class="archive-article-date">
+  	<time datetime="2016-12-30T09:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-30</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://genng.github.io/pic/20161230_ui.png" alt="file-list"></p>
+<p>女朋友大作！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/30/圣诞画个图-女朋友/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-说说Code-Review-转" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -265,7 +315,7 @@
 <p>7.小米Mix、苹果Watch二代、Air Pods耳机、三星note7 爆炸门、iPhone6s 电池门、锤子M1、M1L情怀不敌现实，要先活下去</p>
 <p>8.高通821、3D曲面屏、iPhone7双摄、内嵌玻璃指纹、W1芯片</p>
 <p>9.VR&amp;AR Pokemon go、萌宠大作战（Ali山寨）、谷歌白日梦VR平台、<br>  HTC VR</p>
-<p>10.支付宝 圈子（校园日记）</p>
+<p>10.支付宝 圈子（校园日记） VR红包</p>
 <p>11.p2p 借贷宝 等</p>
 <p>12.游戏 手游份额日益增长（阴阳师） 守望先锋超越英雄联盟、电子竞技有望成为奥运赛事</p>
 <p>13.网盘关闭、智能硬件不再火热</p>
@@ -1056,111 +1106,6 @@ buildTypes {
 
 
   
-    <article id="post-Eclipse-Java注释模板设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/13/Eclipse-Java注释模板设置/">Eclipse Java注释模板设置</a>
-    </h1>
-  
-
-        <a href="/2016/12/13/Eclipse-Java注释模板设置/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:09:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>设置注释模板的入口： Window-&gt;Preference-&gt;Java-&gt;Code Style-&gt;Code Template 然后展开Comments节点就是所有需设置注释的元素啦。现就每一个元素逐一介绍：</p>
-<p>文件(Files)注释标签：</p>
-<pre><code>/**   
-* @Title: ${file_name} 
-* @Package ${package_name} 
-* @Description: ${todo}(用一句话描述该文件做什么) 
-* @author A18ccms A18ccms_gmail_com   
-* @date ${date} ${time} 
-* @version V1.0   
-*/
-</code></pre><p>类型(Types)注释标签（类的注释）：</p>
-<pre><code>/** 
-* @ClassName: ${type_name} 
-* @Description: ${todo}(这里用一句话描述这个类的作用) 
-* @author A18ccms a18ccms_gmail_com 
-* @date ${date} ${time} 
-* 
-* ${tags} 
-*/
-</code></pre><p>字段(Fields)注释标签：</p>
-<pre><code>/** 
-* @Fields ${field} : ${todo}(用一句话描述这个变量表示什么) 
-*/ 
-</code></pre><p>构造函数标签：</p>
-<pre><code>/** 
-* &lt;p&gt;Title: &lt;/p&gt; 
-* &lt;p&gt;Description: &lt;/p&gt; 
-* ${tags} 
-*/
-</code></pre><p>方法(Constructor &amp; Methods)标签：</p>
-<pre><code>/** 
-* @Title: ${enclosing_method} 
-* @Description: ${todo}(这里用一句话描述这个方法的作用) 
-* @param ${tags}    设定文件 
-* @return ${return_type}    返回类型 
-* @throws 
-*/
-</code></pre><p>覆盖方法(Overriding Methods)标签：</p>
-<pre><code>/* (非 Javadoc) 
-* &lt;p&gt;Title: ${enclosing_method}&lt;/p&gt; 
-* &lt;p&gt;Description: &lt;/p&gt; 
-* ${tags} 
-* ${see_to_overridden} 
-*/
-</code></pre><p>代表方法(Delegate Methods)标签：</p>
-<pre><code>/** 
-* ${tags} 
-* ${see_to_target} 
-*/ 
-</code></pre><p>getter方法标签：</p>
-<pre><code>/** 
-* @return ${bare_field_name} 
-*/
-</code></pre><p>setter方法标签：</p>
-<pre><code>/** 
-* @param ${param} 要设置的 ${bare_field_name} 
-*/
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/13/Eclipse-Java注释模板设置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1219,11 +1164,11 @@ buildTypes {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">随笔</a>
+                <a href="javascript:void(0)">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">Android</a>
+                <a href="javascript:void(0)">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
